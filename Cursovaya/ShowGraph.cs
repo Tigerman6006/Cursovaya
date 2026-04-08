@@ -56,59 +56,6 @@ public class ShowGraph
             DrawNode(g, i, Nodes[i, 0], Nodes[i, 1], _graph.nodeColors[i]);
         }
 
-        //if (!gen)
-        //{
-        //    Random rnd = new Random();
-        //    for (int i = 0; i < _graph.n; i++)
-        //    {
-        //        int x = _startPosX + i * circleSize * 2;
-        //        int y = _startPosY + i * circleSize * 2 * rnd.Next(-1, 2);
-        //        Nodes[i, 0] = x;
-        //        Nodes[i, 1] = y;
-        //    }
-        //    gen = true;
-        //}
-        //for (int i = 0; i < _graph.n; i++)
-        //{
-        //    int x1 = Nodes[i, 0];
-        //    int y1 = Nodes[i, 1];
-        //    for (int j = 0; j < _graph.n; j++)
-        //    {
-        //        if (_graph.row[i, j] > 0 && _graph.row[i, j] < 999)
-        //        {
-        //            int x2 = Nodes[j, 0];
-        //            int y2 = Nodes[j, 1];
-        //            if (_graph.roadColors.ContainsKey((i, j)))
-        //            {
-        //                DrawRoad(g, x1, y1, x2, y2, _graph.roadColors[(i, j)], _graph.row[i, j]);
-        //            }
-        //        }
-        //    }
-        //}
-        //for (int i = 0; i < _graph.n; i++)
-        //{
-        //    int x = Nodes[i, 0];
-        //    int y = Nodes[i, 1];
-        //    DrawNode(g, i, x, y, _graph.nodeColors[i]);
-        //}
-        //for (int i = 0; i < _graph.n; i++)
-        //{
-        //    int x1 = Nodes[i, 0];
-        //    int y1 = Nodes[i, 1];
-        //    for (int j = 0; j < _graph.n; j++)
-        //    {
-        //        if (_graph.row[i, j] > 0 && _graph.row[i, j] < 999)
-        //        {
-        //            int x2 = Nodes[j, 0];
-        //            int y2 = Nodes[j, 1];
-        //            if (_graph.roadColors.ContainsKey((i, j)))
-        //            {
-        //                DrawRoad(g, x1, y1, x2, y2, _graph.roadColors[(i, j)], _graph.row[i, j]);
-        //            }
-        //        }
-        //    }
-        //}
-
     }
     private void DrawNode(Graphics g, int num, int x, int y, Color color)
     {
@@ -124,8 +71,6 @@ public class ShowGraph
         string text = num.ToString();
         SizeF textSize = g.MeasureString(text, font);
         g.DrawString(text, font, brush, x + (circleSize - textSize.Width) / 2, y + (circleSize - textSize.Height) / 2);
-        //g.DrawEllipse(pen, x, y, circleSize, circleSize);
-        //g.DrawString(Convert.ToString(num), font, brush, x + circleSize/2, y + circleSize / 2);
     }
     private void DrawRoad(Graphics g, int x1, int y1, int x2, int y2, Color color, int weight)
     {
@@ -152,7 +97,6 @@ public class ShowGraph
 
             g.DrawLine(pen, cx1, cy1, targetX, targetY);
         }
-        //g.DrawLine(pen, centerX1, centerY1, centerX2, centerY2);
         string wText = weight.ToString();
         SizeF wSize = g.MeasureString(wText, font);
         int midX = (cx1 + cx2) / 2;
