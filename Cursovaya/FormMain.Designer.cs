@@ -69,6 +69,7 @@
             buttonStep.TabIndex = 3;
             buttonStep.Text = "Шаг по Приму";
             buttonStep.UseVisualStyleBackColor = true;
+            buttonStep.Click += ButtonStep_Click;
             // 
             // label1
             // 
