@@ -26,13 +26,17 @@ public class Graph
             nodeColors.Add(i, Color.Black);
             for(int j = 0; j < n; j++)
             {
-                int weight = rnd.Next(0, 10);
-                row[i , j] = weight;
-                int check = row[i , j];
-                if (check != 0)
+                if (row[j, i] == 0)
                 {
-                    roadColors[(i, j)] = Color.Black;
+                    int weight = rnd.Next(0, 10);
+                    row[i, j] = weight;
+                    int check = row[i, j];
+                    if (check != 0)
+                    {
+                        roadColors[(i, j)] = Color.Black;
+                    }
                 }
+                
             }
         }
     }

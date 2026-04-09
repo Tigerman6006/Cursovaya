@@ -38,13 +38,12 @@ namespace Cursovaya
             }
             if (stepExecutor.MoveNext())
             {
-                // Отрисовать изменения (Invalidate / Refresh)
                 pictureBox1.Image = _canvas.DrawCanvas();
                 Console.WriteLine($"Текущий вес: {prim.TotalMinCost}");
             }
             else
             {
-                MessageBox.Show("Остовное дерево построено!");
+                MessageBox.Show($"Остовное дерево построено! Итоговый вес: {prim.TotalMinCost}");
             }
         }
 

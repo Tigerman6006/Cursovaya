@@ -28,12 +28,12 @@ class Prim
         {
             for (int j = 0; j < n; j++)
             {
-                cost[i, j] = _graph.row[i, j];
-                if (cost[i, j] == 0) cost[i, j] = 999;
+                int val = _graph.row[i, j];
+                cost[i, j] = (val == 0) ? 999 : val;
             }
         }
         visited[0] = 1;
-        _graph.nodeColors[1] = Color.Red; 
+        _graph.nodeColors[0] = Color.Red; 
         edgesCount = 1;
 
 
@@ -63,10 +63,10 @@ class Prim
 
             if (a != -1 && b != -1)
             {
-                _graph.roadColors[(a + 1, b + 1)] = Color.Red;
-                _graph.roadColors[(b + 1, a + 1)] = Color.Red;
+                _graph.roadColors[(a, b)] = Color.Red;
+                _graph.roadColors[(b, a)] = Color.Red;
 
-                _graph.nodeColors[b + 1] = Color.Red;
+                _graph.nodeColors[b] = Color.Red;
 
                 mincost += min;
                 visited[b] = 1;
@@ -82,45 +82,4 @@ class Prim
         }
     }
 }
-//    public int MinOstTree()
-//    {
-//        int[] visited = new int[count];
-//        int N = 1;
-//        for (int i = 0; i < count; i++) visited[i] = 0;
-//        visited[0] = 1;
-
-//        while (N < count)
-//        {
-//            int min = 999;
-//            int a = 0, b = 0;
-
-//            for (int i = 0; i < count; i++)
-//            {
-//                if (visited[i] == 1)
-//                {
-//                    for (int j = 0; j < count; j++)
-//                    {
-//                        if (visited[j] == 0 && cost[i, j] < min)
-//                        {
-//                            min = cost[i, j];
-//                            a = i;
-//                            b = j;
-//                        }
-//                    }
-//                }
-//            }
-
-//            if (visited[b] == 0)
-//            {
-//                _graph.roadColors[(a + 1, b + 1)] = Color.Red;
-//                mincost += min;
-//                visited[b] = 1;
-//            }
-
-//            cost[a, b] = cost[b, a] = 999;
-//        }
-
-//        return mincost;
-//    }
-//}
 
