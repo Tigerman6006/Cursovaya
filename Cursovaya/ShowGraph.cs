@@ -81,9 +81,9 @@ public class ShowGraph
         int cy2 = y2 + offset;
         Pen pen = new Pen(color, 1);
         Brush brush = new SolidBrush(color);
-        AdjustableArrowCap arrow = new AdjustableArrowCap(5, 5);
+        //AdjustableArrowCap arrow = new AdjustableArrowCap(5, 5);
         Font font = new Font("Arial", 9);
-        pen.CustomEndCap = arrow;
+        //pen.CustomEndCap = arrow;
         
         float dx = cx2 - cx1;
         float dy = cy2 - cy1;
