@@ -12,6 +12,7 @@ public class CursCanvas
     public int? _canvasHeight;
 
     public ShowGraph? _showGraph;
+    public int minost = 0;
 
     public CursCanvas(int canvasWidth, int canvasHeight)
     {
@@ -27,6 +28,7 @@ public class CursCanvas
         _showGraph = graph;
         return true;
     }
+
     public Bitmap? DrawCanvas()
     {
         if (!_canvasHeight.HasValue || !_canvasWidth.HasValue)
@@ -36,6 +38,7 @@ public class CursCanvas
         Bitmap bmp = new(_canvasWidth.Value, _canvasHeight.Value);
         Graphics graphics = Graphics.FromImage(bmp);
         _showGraph?.Show(graphics);
+        _showGraph?.ShowOstTree(graphics, minost);
         return bmp;
     }
 }

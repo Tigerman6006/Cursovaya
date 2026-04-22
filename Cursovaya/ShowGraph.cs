@@ -105,4 +105,11 @@ public class ShowGraph
         g.FillRectangle(Brushes.White, midX, midY, wSize.Width, wSize.Height);
         g.DrawString(wText, font, brush, midX, midY);
     }
+    public void ShowOstTree(Graphics g, int ostTree)
+    {
+        Brush brush = new SolidBrush(Color.Black);
+        Font font = new Font("Arial", 14);
+        string wText = "Минимальное дерево: " + ostTree.ToString();
+        g.DrawString(wText, font, brush, 20, 20);
+    }
 }

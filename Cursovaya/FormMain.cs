@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Windows.Forms;
 
 namespace Cursovaya
 {
@@ -44,6 +45,48 @@ namespace Cursovaya
             else
             {
                 MessageBox.Show($"Остовное дерево построено! Итоговый вес: {prim.TotalMinCost}");
+                _canvas.minost = prim.TotalMinCost;
+                pictureBox1.Image = _canvas.DrawCanvas();
+            }
+        }
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (prim?.SaveMinCost(saveFileDialog.FileName)==true)
+                {
+                    MessageBox.Show("Сохранение прошло успешно",
+                    "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        /// <summary>
+        /// Обработка нажатия "Загрузка"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                int? loaded = prim?.LoadMinCost(openFileDialog.FileName);
+                if (loaded>0)
+                {
+                    MessageBox.Show("Загрузка прошла успешно",
+                    "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    _canvas.minost = (int)loaded;
+                    pictureBox1.Image = _canvas.DrawCanvas();
+                }
+                else
+                {
+                    MessageBox.Show("Не загрузилось", "Результат",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

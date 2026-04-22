@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Cursovaya;
-class Prim
+public class Prim:AbstractAlgorytm, WorkAlgorytm
 {
     private int[,] cost;
     private int mincost;
     private int count;
-    private Graph _graph;
     private int[] visited;
     private int edgesCount;
     public int TotalMinCost => mincost;
+    private string filePath = "mincost.txt";
 
     public Prim(int n, Graph graph)
     {
@@ -80,6 +80,38 @@ class Prim
                 break;
             }
         }
+    }
+    public bool SaveMinCost(string path = null)
+    {
+        try
+        {
+            File.WriteAllText(path ?? filePath, TotalMinCost.ToString());
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при сохранении: {ex.Message}");
+            return false;
+        }
+        return true;
+    }
+
+    // Загрузка веса из файла
+    public int LoadMinCost(string path = null)
+    {
+        try
+        {
+            string targetPath = path ?? filePath;
+            if (File.Exists(targetPath))
+            {
+                string content = File.ReadAllText(targetPath);
+                return int.Parse(content);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ошибка при загрузке: {ex.Message}");
+        }
+        return 0;
     }
 }
 
